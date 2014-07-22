@@ -5,7 +5,7 @@ This project contains some examples of using the GenMyModel API (https://api.gen
 
 # Examples
 
-## Demo 1
+## Get public projects list
 Simply list the first page of public projects in GenMyModel repository (https://repository.genmymodel.com).
 
 ### Explanation
@@ -20,7 +20,7 @@ In pure JS :
 Using JQuery :
  http://plnkr.co/edit/KTqy4xqy4bZ6oiNuuJqb?p=preview
 
-##Demo 2
+## Get private projects from a User
 Get the list of private projects from a user account and displays it.
 
 ### Explanation
