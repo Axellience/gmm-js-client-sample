@@ -21,7 +21,7 @@
 		var gmmClient = new GMMClientSample();
 
 		// Request for public project list
-		gmmClient.requestAPI("/projects/public", function onResults (error, results) {
+		gmmClient.requestAPI("projects/public", function onResults (error, results) {
 			if (error) {alert("Something went wrong"); return;}
 
 			// Create projects in DOM
