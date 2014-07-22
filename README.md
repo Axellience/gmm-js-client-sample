@@ -30,7 +30,7 @@ This demo works as follow :
  3. Create the list of user's projects in the DOM
 
 To see how the OAuth flow works, check there :
- https://repository.genmymodel.com/a.baron/GMM-js-client-sample/OAuth%20Client%20flow/1
+ https://repository.genmymodel.com/a.baron/GMM-js-client-sample/OAuth-Client-flow/1
 
 ### Live demo
 These demo requires you to be logged in to GenMyModel :
