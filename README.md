@@ -41,3 +41,26 @@ In pure JS :
 
 Using JQuery :
  http://plnkr.co/edit/0gjSCVix64UQ8xNdM7D2?p=preview
+
+
+## Update Model from a User's project
+Update the model from a given project by sending a command to the API.
+
+### Explanation
+This demo works as follow :
+ 1. Use an OAuth2 flow to authenticate user
+ 2. Get the list of user private project by sending a GET to https://api.genmymodel.com/projects/my
+ 4. Click on a project to select it
+ 5. Set the path to the element to change. A class name MyClass in the package myPackage as the following path : //myPackage/MyClass
+ 6. Set the new name of your element
+ 7. Click "Send request"
+ 8. It sends a POST to https://api.genmymodel.com/projects/PROJECT_ID/commands
+
+You can see the changes live in the genmymodel editor if it's opened on this project.
+
+### Live demo
+These demo requires you to be logged in to GenMyModel :
+ https://api.genmymodel.com/login
+ 
+Using JQuery :
+ http://plnkr.co/edit/GjJ6tuo1KiG2woCE8ulb?p=preview

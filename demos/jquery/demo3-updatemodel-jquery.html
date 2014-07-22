@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Demo Update Model JQuery - GenMyModel Client Sample</title>
+
+	<script src="../../js/GMMOAuthSample.js"></script>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<h1>Demo 3 Update Model JQuery</h1>
+
+<div>Demo that update the model from a user by updating an element name</div><br/>
+<div>If nothing happens, <a href="https://api.genmymodel.com/login" target="_blank">click here to login</a></div><br/>
+
+<h2>Private projects :</h2>
+<ul id="privateProjects">
+	<li>Loading...</li>
+</ul>
+
+<h2>Update element in project :</h2>
+<form id="updateProjectForm" name="updateProject">
+	<div>Click on a project to set it's ID here</div>
+	<div><label>ID : <input type="text" name="projectId" required></label></div><br/>
+
+	<div>Enter the path to an element to rename.<br/>For example a class named MyClass in a package myPackage has for path : //myPackage/MyClass.</div>
+	<div><label><input type="text" name="elementPath" placeholder="//MyClass" required></label></div><br/>
+
+	<div>Enter the new name you want for the element</div>
+	<div><label><input type="text" name="newName" placeholder="NewName" required></label></div><br/>
+
+	<input type="submit" value="Send request">
+</form>
+
+<br/>
+<div id="requestResult"></div>
+
+<script>
+	var API_URL = "https://api.genmymodel.com/";
+
+	// Update the model
+	$('#updateProjectForm').on('submit', function (e) {
+		e.preventDefault();
+
+		$.ajax({
+			// Authorisation
+			beforeSend: function (request){request.setRequestHeader("Authorization", gmmOAuth.getAccessTokenHeader());},
+			// URL
+			url: API_URL + "projects/" + updateProject.projectId.value + "/commands",
+			// Command to run, here a set on the "name" of the element
+			data: JSON.stringify([{
+				feature: "name",
+				objectId: {"uri": updateProject.elementPath.value},
+				kind: "set",
+				value: updateProject.newName.value
+			}]),
+			contentType: 'application/json',
+			method: "POST",
+			// Success
+			success: function () {document.getElementById("requestResult").innerHTML = "Result : OK !"},
+			// Error
+			error: function () {document.getElementById("requestResult").innerHTML = "Result : Error..."}
+		});
+
+		return false;
+	});
+</script>
+
+<script>
+	// Same as example "Sample OAuth"
+
+	// Create a sample OAuth manager
+	var gmmOAuth = new GMMOAuthSample();
+	gmmOAuth.ensureLoggedIn();
+
+	// Request for private project list
+	$.ajax({
+		beforeSend: function (request)
+		{
+			request.setRequestHeader("Authorization", gmmOAuth.getAccessTokenHeader());
+		},
+		url: API_URL + "projects/my",
+		success: function onResults (results) {
+			// Create projects in DOM
+			var privateProjectsDiv = $("#privateProjects");
+			privateProjectsDiv.html("");
+
+			// Append projects
+			$.each(results, function (index, project) {
+				privateProjectsDiv.append('<li><a href="#" onclick="setProjectId(\'' + project.projectId + '\')">' + project.name + '</a></li>');
+			});
+		}
+	});
+</script>
+
+<script>
+	// Set a project id in the form
+	function setProjectId(projectId) {updateProject.projectId.value = projectId;}
+</script>
+</body>
+</html>

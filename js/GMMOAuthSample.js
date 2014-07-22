@@ -58,7 +58,7 @@ GMMOAuthSample.prototype.getAccessTokenHeader = function () {
  */
 GMMOAuthSample.prototype.refreshToken = function () {
 	// If no access token, request it
-	window.location = GMM_API_URL + "oauth/authorize?response_type=token&client_id=gmm&redirect_uri=" + window.location;
+	window.location = GMM_API_URL + "oauth/authorize?response_type=token&client_id=test&client_secret=test&redirect_uri=" + window.location;
 };
 
 /**
