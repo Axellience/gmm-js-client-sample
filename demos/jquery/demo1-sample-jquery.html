@@ -2,16 +2,18 @@
 <html>
 <head lang="en">
 	<meta charset="UTF-8">
-	<title>Demo Sample JQuery - GenMyModel Client Sample</title>
+	<title>Demo 1 Sample JQuery - GenMyModel Client Sample</title>
 
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
+	<h1>Demo 1 Sample JQuery</h1>
+
 	<div>Sample demo that get the first page of public projects from the API.</div><br/>
 	<div>Public projects :</div>
-	<div id="publicProjects">
-		<div>Loading...</div>
-	</div>
+	<ul id="publicProjects">
+		<li>Loading...</li>
+	</ul>
 
 
 	<script>
@@ -25,7 +27,7 @@
 
 			// Append projects
 			$.each(results.projects, function (index, project) {
-				publicProjectsDiv.append("<div>" + project.name + "</div>");
+				publicProjectsDiv.append("<li>" + project.name + "</li>");
 			});
 		});
 	</script>

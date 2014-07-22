@@ -2,18 +2,21 @@
 <html>
 <head lang="en">
 	<meta charset="UTF-8">
-	<title>Demo Sample JQuery - GenMyModel Client Sample</title>
+	<title>Demo OAuth JQuery - GenMyModel Client Sample</title>
 
 	<script src="../../js/GMMOAuthSample.js"></script>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-	<div>Sample demo that get the list of private projects from the API. Warning : For this demo to work, you need to deploy it on a webserver, and access it through it.</div><br/>
+	<h1>Demo 2 OAuth JQuery</h1>
+
+	<div>Sample demo that get the list of private projects from the API.</div><br/>
+	<div>If nothing happens, <a href="https://api.genmymodel.com/login" target="_blank">click here to login</a></div><br/>
 
 	<div>Private projects :</div>
-	<div id="privateProjects">
-		<div>Loading...</div>
-	</div>
+	<ul id="privateProjects">
+		<li>Loading...</li>
+	</ul>
 
 	<script>
 		var API_URL = "https://api.genmymodel.com/";
@@ -36,7 +39,7 @@
 
 				// Append projects
 				$.each(results, function (index, project) {
-					privateProjectsDiv.append("<div>" + project.name + "</div>");
+					privateProjectsDiv.append("<li>" + project.name + "</li>");
 				});
 			}
 		});

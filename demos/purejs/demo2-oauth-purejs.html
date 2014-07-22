@@ -8,12 +8,15 @@
 	<script src="../../js/GMMClientSample.js"></script>
 </head>
 <body>
-	<div>Sample demo that get the list of private projects from the API. Warning : For this demo to work, you need to deploy it on a webserver, and access it through it.</div><br/>
+	<h1>Demo 2 OAuth pure JS</h1>
+
+	<div>Sample demo that get the list of private projects from the API.</div><br/>
+	<div>If nothing happens, <a href="https://api.genmymodel.com/login" target="_blank">click here to login</a></div><br/>
 
 	<div>Private projects :</div>
-	<div id="privateProjects">
-		<div>Loading...</div>
-	</div>
+	<ul id="privateProjects">
+		<li>Loading...</li>
+	</ul>
 
 
 	<script>
@@ -36,7 +39,7 @@
 					var privateProjectsDiv = document.getElementById("privateProjects");
 					privateProjectsDiv.innerHTML = "";
 					for (var i = 0; i < results.length; i++) {
-						var tmpProjectDiv = document.createElement("div");
+						var tmpProjectDiv = document.createElement("li");
 						tmpProjectDiv.innerHTML = results[i].name;
 
 						privateProjectsDiv.appendChild(tmpProjectDiv);

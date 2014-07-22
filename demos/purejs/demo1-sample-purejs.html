@@ -2,18 +2,20 @@
 <html>
 <head lang="en">
 	<meta charset="UTF-8">
-	<title>Demo Sample pure JS - GenMyModel Client Sample</title>
-
-	<script src="../../js/GMMClientSample.js"></script>
+	<title>Demo 1 Sample pure JS - GenMyModel Client Sample</title>
 </head>
 <body>
-	<div>Sample demo that get the first page of public projects from the API.</div><br/>
+	<h1>Demo 1 Sample pure JS</h1>
+
+	<div>Sample demo that get the first page of public projects from the <a href="https://api.genmymodel.com/doc" target="_blank">GenMyModel API</a>.</div><br/>
+
 	<div>Public projects :</div>
-	<div id="publicProjects">
-		<div>Loading...</div>
-	</div>
+	<ul id="publicProjects">
+		<li>Loading...</li>
+	</ul>
 
 
+	<script src="../../js/GMMClientSample.js"></script>
 	<script>
 		// Create a sample client to do HTTP requests
 		var gmmClient = new GMMClientSample();
@@ -26,7 +28,7 @@
 			var publicProjectsDiv = document.getElementById("publicProjects");
 			publicProjectsDiv.innerHTML = "";
 			for (var i = 0; i < results.projects.length; i++) {
-				var tmpProjectDiv = document.createElement("div");
+				var tmpProjectDiv = document.createElement("li");
 				tmpProjectDiv.innerHTML = results.projects[i].name;
 
 				publicProjectsDiv.appendChild(tmpProjectDiv);
