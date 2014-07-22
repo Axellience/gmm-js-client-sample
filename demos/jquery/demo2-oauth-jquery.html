@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Demo Sample JQuery - GenMyModel Client Sample</title>
+
+	<script src="../../js/GMMOAuthSample.js"></script>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	<div>Sample demo that get the list of private projects from the API. Warning : For this demo to work, you need to deploy it on a webserver, and access it through it.</div><br/>
+
+	<div>Private projects :</div>
+	<div id="privateProjects">
+		<div>Loading...</div>
+	</div>
+
+	<script>
+		var API_URL = "https://api.genmymodel.com/";
+
+		// Create a sample OAuth manager
+		var gmmOAuth = new GMMOAuthSample();
+		gmmOAuth.ensureLoggedIn();
+
+		// Request for public project list
+		$.ajax({
+			beforeSend: function (request)
+			{
+				request.setRequestHeader("Authorization", gmmOAuth.getAccessTokenHeader());
+			},
+			url: API_URL + "/projects/my",
+			success: function onResults (results) {
+				// Create projects in DOM
+				var privateProjectsDiv = $("#privateProjects");
+				privateProjectsDiv.html("");
+
+				// Append projects
+				$.each(results, function (index, project) {
+					privateProjectsDiv.append("<div>" + project.name + "</div>");
+				});
+			}
+		});
+	</script>
+</body>
+</html>

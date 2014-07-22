@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Demo Sample JQuery - GenMyModel Client Sample</title>
+
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	<div>Sample demo that get the first page of public projects from the API.</div><br/>
+	<div>Public projects :</div>
+	<div id="publicProjects">
+		<div>Loading...</div>
+	</div>
+
+
+	<script>
+		var API_URL = "https://api.genmymodel.com/";
+
+		// Request for public project list
+		$.get(API_URL + "/projects/public", function onResults (results) {
+			// Create projects in DOM
+			var publicProjectsDiv = $("#publicProjects");
+			publicProjectsDiv.html("");
+
+			// Append projects
+			$.each(results.projects, function (index, project) {
+				publicProjectsDiv.append("<div>" + project.name + "</div>");
+			});
+		});
+	</script>
+</body>
+</html>
