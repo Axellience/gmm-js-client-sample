@@ -29,7 +29,7 @@ This demo works as follow :
  2. Get the list of user private project by sending a GET to https://api.genmymodel.com/projects/my
  3. Create the list of user's projects in the DOM
 
-To see how the OAuth flow works, check there :
+To see how the OAuth flow works, check here :
  https://repository.genmymodel.com/a.baron/GMM-js-client-sample/OAuth-Client-flow/1
 
 ### Live demo
